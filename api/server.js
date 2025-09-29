@@ -4,16 +4,18 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg'); // PostgreSQL client
 const cors = require('cors');
-// const serverless = require('serverless-http');
+const serverless = require('serverless-http');
 
 const app = express();
-const port = process.env.port;
+// const port = process.env.port || 3000;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies from Angular
 // Configure CORS to allow requests from your Angular application's origin
 app.use(cors({
-    origin: 'https://student-app-dun.vercel.app/api/student' // <-- Adjust if your Angular app runs on a different port/host
+    origin: ['http://localhost:4200', 'https://student-app-dun.vercel.app'],
+    // methods: ['GET', 'POST'],
+    // credentials: true // <-- Adjust if your Angular app runs on a different port/host
 }));
 
 //
@@ -69,9 +71,14 @@ app.post('/', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
+// app.listen(port, () => {
+//     console.log(`Server listening at http://localhost:${port}`);
+// });
+app.get('/', (req, res) => {
+  res.send('API is running!');
 });
+
+module.exports = serverless(app);
 
 // module.exports = serverless(app);
 // app.get('/api/student', (req, res) => {
