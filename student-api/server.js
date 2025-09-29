@@ -7,13 +7,13 @@ const cors = require('cors');
 // const serverless = require('serverless-http');
 
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.port;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies from Angular
 // Configure CORS to allow requests from your Angular application's origin
 app.use(cors({
-    origin: 'http://localhost:4200' // <-- Adjust if your Angular app runs on a different port/host
+    origin: ['http://localhost:4200','https://student-app-dun.vercel.app/'] // <-- Adjust if your Angular app runs on a different port/host
 }));
 
 //
