@@ -13,7 +13,7 @@ const port = process.env.port;
 app.use(express.json()); // To parse JSON bodies from Angular
 // Configure CORS to allow requests from your Angular application's origin
 app.use(cors({
-    origin: 'https://student-app-dun.vercel.app/' // <-- Adjust if your Angular app runs on a different port/host
+    origin: 'https://student-app-dun.vercel.app/api/student' // <-- Adjust if your Angular app runs on a different port/host
 }));
 
 //
