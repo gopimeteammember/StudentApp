@@ -74,9 +74,9 @@ app.listen(port, () => {
 });
 
 // module.exports = serverless(app);
-app.get('/api/student', (req, res) => {
-  res.send('API is running!');
-});
+// app.get('/api/student', (req, res) => {
+//   res.send('API is running!');
+// });
 
 // Export as serverless function
 // module.exports = serverless(app);
