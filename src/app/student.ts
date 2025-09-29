@@ -19,7 +19,9 @@ interface Student {
 export class StudentService {
   // IMPORTANT: Replace this with the URL of your actual backend API endpoint.
   // This is the endpoint that will receive the POST request and save to PostgreSQL.
-  private apiUrl = 'http://localhost:3000/api/students'; 
+  // private apiUrl = 'http://localhost:3000/api/students'; 
+  private apiUrl = 'https://student-app-dun.vercel.app/api/students'; 
+
   // private apiUrl = 'https://dpg-d3403le3jp1c73ffjf20-a/dataentryapp/api/students';
 
   // Inject the HttpClient service

@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg'); // PostgreSQL client
 const cors = require('cors');
+const serverless = require('serverless-http');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -15,6 +16,8 @@ app.use(cors({
     origin: ['http://localhost:4200','https://student-app-dun.vercel.app/'] // <-- Adjust if your Angular app runs on a different port/host
 }));
 
+//
+//  
 // 2. PostgreSQL Connection Pool Setup
 const pool = new Pool({
     user: process.env.PGUSER,
@@ -35,7 +38,7 @@ pool.connect()
 
 
 // 3. API Route to Handle Registration (POST /api/students)
-app.post('/api/students', async (req, res) => {
+app.post('/app/students', async (req, res) => {
     // Data sent from the Angular form (reg-form.component.ts)
     const { firstName, lastName, email, course } = req.body; 
 
@@ -69,6 +72,9 @@ app.post('/api/students', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
-app.get('/', (req, res) => {
+app.get('/app/students', (req, res) => {
   res.send('API is running!');
 });
+
+// Export as serverless function
+module.exports = serverless(app);
