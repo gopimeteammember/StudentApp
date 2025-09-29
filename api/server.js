@@ -4,10 +4,10 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg'); // PostgreSQL client
 const cors = require('cors');
-const serverless = require('serverless-http');
+// const serverless = require('serverless-http');
 
 const app = express();
-// const port = process.env.port || 3000;
+const port = process.env.port || 3000;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies from Angular
@@ -40,7 +40,7 @@ pool.connect()
 
 
 // 3. API Route to Handle Registration (POST /api/students)
-app.post('/', async (req, res) => {
+app.post('/api/student', async (req, res) => {
     // Data sent from the Angular form (reg-form.component.ts)
     const { firstName, lastName, email, course } = req.body; 
 
@@ -71,14 +71,14 @@ app.post('/', async (req, res) => {
 });
 
 // Start the server
-// app.listen(port, () => {
-//     console.log(`Server listening at http://localhost:${port}`);
-// });
-app.get('/', (req, res) => {
-  res.send('API is running!');
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
 });
+// app.get('/', (req, res) => {
+//   res.send('API is running!');
+// });
 
-module.exports = serverless(app);
+// module.exports = serverless(app);
 
 // module.exports = serverless(app);
 // app.get('/api/student', (req, res) => {
