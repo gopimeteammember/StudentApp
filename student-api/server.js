@@ -13,7 +13,7 @@ const port = process.env.port;
 app.use(express.json()); // To parse JSON bodies from Angular
 // Configure CORS to allow requests from your Angular application's origin
 app.use(cors({
-    origin: ['http://localhost:4200','https://student-app-dun.vercel.app/'] // <-- Adjust if your Angular app runs on a different port/host
+    origin: 'https://student-app-dun.vercel.app/' // <-- Adjust if your Angular app runs on a different port/host
 }));
 
 //
@@ -38,7 +38,7 @@ pool.connect()
 
 
 // 3. API Route to Handle Registration (POST /api/students)
-app.post('/api/student', async (req, res) => {
+app.post('/', async (req, res) => {
     // Data sent from the Angular form (reg-form.component.ts)
     const { firstName, lastName, email, course } = req.body; 
 
