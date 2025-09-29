@@ -6,26 +6,26 @@ const { Pool } = require('pg'); // PostgreSQL client
 const cors = require('cors');
 
 const app = express();
-const port = process.env.port;
+const port = process.env.port || 3000;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies from Angular
 // Configure CORS to allow requests from your Angular application's origin
 app.use(cors({
-    origin: ['http://localhost:4200'] // <-- Adjust if your Angular app runs on a different port/host
+    origin: 'http://localhost:4200' // <-- Adjust if your Angular app runs on a different port/host
 }));
 
 // 2. PostgreSQL Connection Pool Setup
 const pool = new Pool({
-    // user: process.env.PGUSER,
-    // host: process.env.PGHOST,
-    // database: process.env.PGDATABASE,
-    // password: process.env.PGPASSWORD,
-    // port: process.env.PGPORT,
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    } 
+    user: process.env.PGUSER,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT,
+    // connectionString: process.env.DATABASE_URL,
+    // ssl: {
+    //     rejectUnauthorized: false
+    // } 
 });
 
 // Test the database connection
@@ -66,7 +66,7 @@ app.post('/api/students', async (req, res) => {
 });
 
 // Start the server
-app.listen(rocess.env.port, () => {
+app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
 app.get('/', (req, res) => {
