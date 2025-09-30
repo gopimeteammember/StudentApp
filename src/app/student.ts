@@ -14,7 +14,7 @@ interface Student {
 
 @Injectable({
   // 'root' means the service is available throughout the application
-  providedIn: 'root'
+  providedIn: 'any'
 })
 
 export class StudentService {
