@@ -40,10 +40,10 @@ export class StudentService {
     } else {
       // 2. If running on the server (SSR), default to the production/Vercel URL.
       // The server rendering process is usually part of the deployment pipeline.
-      this.apiUrl = 'https://student-app-dun.vercel.app' + this.apiPath;
+      this.apiUrl = 'https://student-app-dun.vercel.app/' + this.apiPath;
     }
 
-    // console.log('StudentService API URL set to:', this.apiUrl); // Optional debug line
+     console.log('StudentService API URL set to:', this.apiUrl); // Optional debug line
   }
 
   /**
