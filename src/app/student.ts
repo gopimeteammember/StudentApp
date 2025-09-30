@@ -32,7 +32,7 @@ export class StudentService {
 
       if (isVercel) {
         // Use the live Vercel domain for production/Vercel previews
-        this.apiUrl = 'https://student-app-dun.vercel.app' + this.apiPath;
+        this.apiUrl = 'https://student-app-dun.vercel.app/' + this.apiPath;
       } else {
         // Use localhost for local development (e.g., when running ng serve)
         this.apiUrl = 'http://localhost:3000' + this.apiPath;
